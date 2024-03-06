@@ -21,12 +21,6 @@ class StockQuantPackage(models.Model):
             "context": self.env.context,
         }
 
-    def check_source_location(self):
-        if any(package.location_id != self[0].location_id for package in self):
-            raise exceptions.UserError(
-                _("All packages must have the same source location.")
-            )
-
     def _move_to_location(self, location, destination_package=None, validate=False):
         """
         Move packages to a specified location.
@@ -47,7 +41,6 @@ class StockQuantPackage(models.Model):
         If the destination location is the same as the current location
         or if the destination package does not belong to the specified location.
         """
-        self.check_source_location()
 
         # Check if the location is different from the current location
         if location == self[0].location_id and not destination_package:

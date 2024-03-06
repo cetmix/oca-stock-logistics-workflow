@@ -8,5 +8,7 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     package_move_picking_type_id = fields.Many2one(
-        "stock.picking.type", string="Package Move Operation"
+        "stock.picking.type",
+        string="Package Move Operation",
+        domain="[('show_entire_packs', '=', True)]",
     )

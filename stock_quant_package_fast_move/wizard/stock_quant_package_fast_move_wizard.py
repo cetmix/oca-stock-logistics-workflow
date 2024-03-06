@@ -25,7 +25,6 @@ class StockQuantPackageFastMoveWizard(models.TransientModel):
         """
         package_ids = self._context.get("active_ids")
         packages = self.env["stock.quant.package"].browse(package_ids)
-        packages.check_source_location()
 
         if self.put_in_new_package:
             destination_package_id = packages.create_new_package()

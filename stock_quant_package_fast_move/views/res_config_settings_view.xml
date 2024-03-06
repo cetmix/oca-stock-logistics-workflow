@@ -22,6 +22,9 @@
                             title="Values set here are company-specific."
                             groups="base.group_multi_company"
                         />
+                        <div class="text-muted">
+                            Only operations where the "Move Entire Packages" checkbox is enabled can be selected.
+                        </div>
                         <div class="content-group">
                             <field name="package_move_picking_type_id" />
                         </div>

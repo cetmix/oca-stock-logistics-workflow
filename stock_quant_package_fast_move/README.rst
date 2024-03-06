@@ -32,7 +32,7 @@ This module simplifies package movement between different warehouse locations.
 
 You can simply select several packages and use a wizard that will perform all the underlying inventory operations.
 
-NB: this module depends on the [Stock Picking Move Package to Another Package](https://github.com/OCA/stock-logistics-workflow/stock_picking_move_package_to_package) module.
+NB: this module depends on the `Stock Picking Move Package to Another Package <https://github.com/OCA/stock-logistics-workflow/stock_picking_move_package_to_package>`_ module.
 You should configure it properly in case you want to use the 'destination package' option.
 
 **Table of contents**
@@ -65,7 +65,7 @@ Configuration
 
 - Go to the "Inventory -> Configuration -> Settings"
 - Activate the "Packages" checkbox
-- In the "Package Move Operation" select the operation type that will be used for the easy package transfers. This setting is configured for each company separately
+- In the "Package Move Operation" select the operation type that will be used for the easy package transfers. Make sure that the "Move Entire Packages" checkbox is enabled. This setting is configured for each company separately.
 
 .. image:: https://raw.githubusercontent.com/OCA/stock-logistics-workflow/16.0/stock_quant_package_fast_move/static/img/package_fast_move_configure.png
 
