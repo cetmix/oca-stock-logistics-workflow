@@ -45,6 +45,10 @@ To configure this module, you need to:
 lot'option and set 'create lot every' count of uoms for the products you
 need.
 
+If you need to create lots for different companies, you can set the
+sequence for the company #. Go to a General Settings > Inventory > Stock
+Serial Lots > Select sequence for current company
+
 Usage
 =====
 
@@ -55,6 +59,10 @@ product. #. Set auto create lot. #. Go to *Inventory > Incoming* and
 create one. #. Validate picking without lot. #. If *Only multiples
 allowed* has been selected in product, picking validation will be
 blocked if qty received is not a multiple of the value set in product.
+
+If you need to create lots for different companies, you can set the
+sequence for the company #. Go to a General Settings > Inventory > Stock
+Serial Lots > Select sequence for current company
 
 Bug Tracker
 ===========

@@ -14,5 +14,6 @@
     "depends": ["stock_picking_auto_create_lot"],
     "data": [
         "views/product_template_view.xml",
+        "views/res_config_settings_view.xml",
     ],
 }
