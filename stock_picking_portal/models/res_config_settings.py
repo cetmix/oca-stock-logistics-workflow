@@ -13,25 +13,37 @@ class ResConfigSettings(models.TransientModel):
     )
 
     def set_values(self):
-        super().set_values()
-        ICPSudo = self.env["ir.config_parameter"].sudo()
-        ICPSudo.set_param(
-            "stock_picking_portal.portal_visible_operation_ids",
-            ",".join(str(i) for i in self.portal_visible_operation_ids.ids),
+        """Save the M2M into the boolean field on stock.picking.type,
+        updating only the records whose flag have changed."""
+        res = super().set_values()
+        selected = self.portal_visible_operation_ids
+        currently_visible = self.env["stock.picking.type"].search(
+            [
+                ("portal_visible", "=", True),
+            ],
         )
-        return
+
+        to_invisible = currently_visible - selected
+        to_visible = selected - currently_visible
+
+        if to_invisible:
+            to_invisible.write({"portal_visible": False})
+        if to_visible:
+            to_visible.write({"portal_visible": True})
+
+        return res
 
     @api.model
     def get_values(self):
         res = super().get_values()
-        ICPSudo = self.env["ir.config_parameter"].sudo()
-        portal_visible_operation_ids = ICPSudo.get_param(
-            "stock_picking_portal.portal_visible_operation_ids", default=False
-        )
-        if portal_visible_operation_ids:
-            res.update(
-                portal_visible_operation_ids=[
-                    int(r) for r in portal_visible_operation_ids.split(",")
-                ]
+        visible_ids = (
+            self.env["stock.picking.type"]
+            .search(
+                [
+                    ("portal_visible", "=", True),
+                ],
             )
+            .ids
+        )
+        res.update(portal_visible_operation_ids=visible_ids)
         return res
